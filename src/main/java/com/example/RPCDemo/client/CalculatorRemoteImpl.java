@@ -25,6 +25,7 @@ public class CalculatorRemoteImpl implements Calculator, DiscoveryService{
 
     public int add(int a, int b) throws MethodNotFoundException {
         String method = "Calculator.add";
+        //订阅方法
         subscribe(method);
         if(null == url || "".equals(url))
             throw new MethodNotFoundException("没有在注册中心找到方法" + method);

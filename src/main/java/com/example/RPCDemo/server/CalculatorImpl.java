@@ -6,6 +6,11 @@ import com.example.RPCDemo.registry.Url;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,8 +29,8 @@ public class CalculatorImpl implements Calculator, RegistryService {
         url.setMethod("Calculator.add");
         url.setParameters(parameters);
 
-        instance.register(url);
         log.info("注册服务: {}", url.getMethod());
+        instance.register(url);
     }
 
     public int add(int a, int b) {
@@ -33,8 +38,25 @@ public class CalculatorImpl implements Calculator, RegistryService {
     }
 
     public void register(Url url) {
-//        Registry.registry.put(url.getMethod(), url);
-        //todo: 将url传送给注册中心
+        try {
+            Socket socket = new Socket("127.0.0.1", PORT);
+
+            //将url发送给注册中心
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            objectOutputStream.writeObject(url);
+
+            //接收注册中心的响应消息
+            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+            Object response = objectInputStream.readObject();
+
+            log.info("response from registry: {}", response);
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void unregister(Url url) {

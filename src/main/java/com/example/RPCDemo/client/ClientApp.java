@@ -5,8 +5,8 @@ import com.example.RPCDemo.server.Calculator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ConsumerApp {
-    private static Logger log = LoggerFactory.getLogger(ConsumerApp.class);
+public class ClientApp {
+    private static Logger log = LoggerFactory.getLogger(ClientApp.class);
 
     public static void main(String[] args) {
         Calculator calculator = new CalculatorRemoteImpl();

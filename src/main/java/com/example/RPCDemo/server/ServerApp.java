@@ -28,14 +28,14 @@ public class ServerApp {
                 try {
                     //将请求反序列化
                     ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
-                    Object object = objectInputStream.readObject();
+                    Object request = objectInputStream.readObject();
 
-                    log.info("request is {}", object);
+                    log.info("request is {}", request);
 
                     //调用服务
                     int result = 0;
-                    if (object instanceof Url) {
-                        Url url = (Url) object;
+                    if (request instanceof Url) {
+                        Url url = (Url) request;
                         if ("Calculator.add".equals(url.getMethod())) {
                             result = calculator.add(Integer.parseInt(url.getParameters().get("a")), Integer.parseInt(url.getParameters().get("b")));
                         } else {

@@ -1,8 +1,11 @@
 package com.example.RPCDemo.registry;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class Url {
+public class Url implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String address;
     private String method;
     private Map<String, String> parameters;
