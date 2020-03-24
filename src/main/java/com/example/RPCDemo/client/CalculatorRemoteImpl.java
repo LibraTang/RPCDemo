@@ -2,7 +2,7 @@ package com.example.RPCDemo.client;
 
 import com.example.RPCDemo.exception.MethodNotFoundException;
 import com.example.RPCDemo.registry.DiscoveryService;
-import com.example.RPCDemo.registry.Registry;
+import com.example.RPCDemo.registry.RegistryApp;
 import com.example.RPCDemo.registry.Url;
 import com.example.RPCDemo.server.Calculator;
 import com.example.RPCDemo.request.CalculateRpcRequest;
@@ -121,6 +121,6 @@ public class CalculatorRemoteImpl implements Calculator, DiscoveryService{
      * @param method 方法名
      */
     public void subscribe(String method) {
-        url = Registry.registry.get(method);
+        url = RegistryApp.registry.get(method);
     }
 }

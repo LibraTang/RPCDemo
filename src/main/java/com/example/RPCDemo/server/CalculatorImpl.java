@@ -1,6 +1,6 @@
 package com.example.RPCDemo.server;
 
-import com.example.RPCDemo.registry.Registry;
+import com.example.RPCDemo.registry.RegistryApp;
 import com.example.RPCDemo.registry.RegistryService;
 import com.example.RPCDemo.registry.Url;
 import org.slf4j.Logger;
@@ -60,6 +60,6 @@ public class CalculatorImpl implements Calculator, RegistryService {
     }
 
     public void unregister(Url url) {
-        Registry.registry.remove(url.getMethod());
+        RegistryApp.registry.remove(url.getMethod());
     }
 }
