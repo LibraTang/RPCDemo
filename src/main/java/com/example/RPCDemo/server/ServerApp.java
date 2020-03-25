@@ -46,6 +46,7 @@ public class ServerApp {
                     //返回结果
                     ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
                     objectOutputStream.writeObject(new Integer(result));
+                    log.info("result is: {}", result);
 
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();

@@ -37,6 +37,37 @@ public class CalculatorImpl implements Calculator, RegistryService {
         return a + b;
     }
 
+    public int add(Url url) {
+        try {
+            Socket socket = new Socket(url.getAddress(), 9091);
+
+            //将请求发送给服务提供方
+            //如果将objectInputStream的初始化放在这里将导致卡在writeObject，还不知道为啥……
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            objectOutputStream.writeObject(url);
+
+            //将响应反序列化
+            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+            Object response = objectInputStream.readObject();
+            log.info("response is {}", response);
+
+            if(response instanceof Integer) {
+                return (Integer)response;
+            } else {
+                throw new InternalError();
+            }
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+            throw new InternalError();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new InternalError();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            throw new InternalError();
+        }
+    }
+
     public void register(Url url) {
         try {
             Socket socket = new Socket("127.0.0.1", PORT);

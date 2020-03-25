@@ -1,6 +1,5 @@
 package com.example.RPCDemo.client;
 
-import com.example.RPCDemo.exception.MethodNotFoundException;
 import com.example.RPCDemo.registry.DiscoveryService;
 import com.example.RPCDemo.registry.Url;
 import com.example.RPCDemo.server.Calculator;
@@ -8,21 +7,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Map;
 
 public class ClientApp implements DiscoveryService {
     private static Logger log = LoggerFactory.getLogger(ClientApp.class);
     private static final ClientApp instance = new ClientApp();
+    private static final Calculator calculator = new CalculatorRemoteImpl();
     private static final int PORT = 9093;
-    private static Url url;
+    private static Url url = null;
 
     public static void main(String[] args) {
-        Calculator calculator = new CalculatorRemoteImpl();
+        //订阅方法
         instance.subscribe("Calculator.add");
+        //订阅成功则执行方法
+        if (null != url && !"".equals(url)) {
+            Map<String, String> parameters = url.getParameters();
+            for (Map.Entry<String, String> entry : parameters.entrySet()) {
+                parameters.put(entry.getKey(), "1");
+            }
+            int result = calculator.add(url);
+            log.info("result is: {}", result);
+        }
     }
 
     public void subscribe(String method) {
