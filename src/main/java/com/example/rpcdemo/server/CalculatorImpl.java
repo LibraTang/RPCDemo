@@ -1,8 +1,8 @@
-package com.example.RPCDemo.server;
+package com.example.rpcdemo.server;
 
-import com.example.RPCDemo.registry.RegistryApp;
-import com.example.RPCDemo.registry.RegistryService;
-import com.example.RPCDemo.registry.Url;
+import com.example.rpcdemo.registry.RegistryApp;
+import com.example.rpcdemo.registry.RegistryService;
+import com.example.rpcdemo.registry.Url;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +14,7 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 
+@Deprecated
 public class CalculatorImpl implements Calculator, RegistryService {
     private static Logger log = LoggerFactory.getLogger(CalculatorImpl.class);
     private static int PORT = 9092;

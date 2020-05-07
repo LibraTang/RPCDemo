@@ -1,4 +1,4 @@
-package com.example.RPCDemo.registry;
+package com.example.rpcdemo.registry;
 
 public interface DiscoveryService {
     /**

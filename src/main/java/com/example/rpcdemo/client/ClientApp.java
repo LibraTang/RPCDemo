@@ -1,8 +1,8 @@
-package com.example.RPCDemo.client;
+package com.example.rpcdemo.client;
 
-import com.example.RPCDemo.registry.DiscoveryService;
-import com.example.RPCDemo.registry.Url;
-import com.example.RPCDemo.server.Calculator;
+import com.example.rpcdemo.registry.DiscoveryService;
+import com.example.rpcdemo.registry.Url;
+import com.example.rpcdemo.server.Calculator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +13,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Map;
 
+@Deprecated
 public class ClientApp implements DiscoveryService {
     private static Logger log = LoggerFactory.getLogger(ClientApp.class);
     private static final ClientApp instance = new ClientApp();

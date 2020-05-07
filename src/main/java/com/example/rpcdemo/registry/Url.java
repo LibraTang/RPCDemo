@@ -1,4 +1,4 @@
-package com.example.RPCDemo.registry;
+package com.example.rpcdemo.registry;
 
 import java.io.Serializable;
 import java.util.Map;

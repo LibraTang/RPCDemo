@@ -1,7 +1,6 @@
-package com.example.RPCDemo.server;
+package com.example.rpcdemo.server;
 
-import com.example.RPCDemo.registry.Url;
-import com.example.RPCDemo.request.CalculateRpcRequest;
+import com.example.rpcdemo.registry.Url;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+@Deprecated
 public class ServerApp {
     private static Logger log = LoggerFactory.getLogger(ServerApp.class);
     private static CalculatorImpl calculator = new CalculatorImpl();

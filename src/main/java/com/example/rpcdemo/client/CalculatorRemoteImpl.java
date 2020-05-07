@@ -1,7 +1,7 @@
-package com.example.RPCDemo.client;
+package com.example.rpcdemo.client;
 
-import com.example.RPCDemo.registry.Url;
-import com.example.RPCDemo.server.Calculator;
+import com.example.rpcdemo.registry.Url;
+import com.example.rpcdemo.server.Calculator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+@Deprecated
 public class CalculatorRemoteImpl implements Calculator {
     public static final int PORT = 9091;
     private static Logger log = LoggerFactory.getLogger(CalculatorRemoteImpl.class);

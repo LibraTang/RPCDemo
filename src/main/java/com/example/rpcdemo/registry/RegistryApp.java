@@ -1,13 +1,9 @@
-package com.example.RPCDemo.registry;
+package com.example.rpcdemo.registry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.Hashtable;
 import java.util.Map;
 
