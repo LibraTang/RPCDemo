@@ -4,6 +4,7 @@ import com.example.rpcdemo.client.ClientConfig;
 import com.example.rpcdemo.client.RpcProxyHandler;
 import com.example.rpcdemo.client.RpcRequest;
 import com.example.rpcdemo.server.RpcResponse;
+import com.example.rpcdemo.server.RpcResponseNet;
 import com.example.rpcdemo.server.ServerConfig;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +14,9 @@ import org.springframework.context.ApplicationContext;
 import java.io.IOException;
 import java.lang.reflect.Proxy;
 
+/**
+ * RPC工具类
+ */
 @Slf4j
 public class RPC {
     /**
@@ -45,7 +49,7 @@ public class RPC {
      */
     public static void start() {
         log.info("RpcDemo start...");
-        // TODO: 服务端启动rpc
+        RpcResponseNet.connect();
     }
 
     /**

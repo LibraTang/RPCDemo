@@ -23,7 +23,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * netty连接配置类
+ * netty客户端连接配置类
  */
 @Slf4j
 public class RpcRequestNet {
@@ -106,7 +106,7 @@ public class RpcRequestNet {
             log.error("请求实体转化为json出错");
         }
 
-        assert requestJson != null;
+        assert requestJson != null : "json对象为空";
         ByteBuf requestBuf = Unpooled.copiedBuffer(requestJson.getBytes());
         RpcRequestHandler.channelCtx.writeAndFlush(requestBuf);
         log.info("请求 {} 已发送", request.getRequestId());

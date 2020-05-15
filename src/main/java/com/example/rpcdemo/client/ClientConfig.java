@@ -31,6 +31,7 @@ public class ClientConfig implements ApplicationContextAware {
      * @param applicationContext
      * @throws BeansException
      */
+    @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         RPC.clientContext = applicationContext;
     }
