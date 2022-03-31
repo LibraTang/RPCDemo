@@ -22,7 +22,7 @@
 
     <properties>
         <slf4jVersion>1.6.1</slf4jVersion>
-        <spring.version>4.3.3.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
     </properties>
 
     <dependencies>
